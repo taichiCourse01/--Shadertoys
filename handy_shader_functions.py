@@ -19,17 +19,15 @@ def smoothstep(v1, v2, v):
     return (3-2 * t) * t**2
 
 @ti.func
-def linearstep(v_min, v_max, v):
-    t = 0.0
-    if v_min >= v_max:
-        if v < v_min: t =0
-        else: t = 1
-    else:
-        if v < v_min: v = v_min
-        elif v > v_max: v = v_max
-        t = (v-v_min) / float(v_max-v_min)
+def step(edge, v):
+    ret = 0.0
+    if (v < edge): ret = 0.0
+    else: ret = 1.0
+    return ret
 
-    return t
+@ti.func
+def lerp(x, y, a):
+    return x * (1-a) + y * a
 
 @ti.func
 def clamp3(vec, v_min, v_max):

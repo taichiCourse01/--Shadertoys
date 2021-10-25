@@ -2,7 +2,7 @@
 
 import taichi as ti
 
-ti.init(arch = ti.cpu)
+ti.init(arch = ti.cuda)
 
 res_x = 512
 res_y = 512
@@ -12,7 +12,8 @@ pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 def render(t:ti.f32):
     # draw something on your canvas
     for i,j in pixels:
-        pixels[i, j] = ti.Vector([0.0, 0.0, 0.0]) # init your canvas to black
+        color = ti.Vector([0.0, 0.0, 0.0]) # init your canvas to black
+        pixels[i,j] = color
 
 gui = ti.GUI("Canvas", res=(res_x, res_y))
 
