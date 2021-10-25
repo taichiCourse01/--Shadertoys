@@ -3,7 +3,7 @@
 import taichi as ti
 import handy_shader_functions as hsf
 
-ti.init(arch = ti.cpu)
+ti.init(arch = ti.cuda)
 
 res_x = 1200//2
 res_y = 675//2

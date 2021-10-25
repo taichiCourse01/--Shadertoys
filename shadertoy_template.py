@@ -12,7 +12,7 @@ pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 def render(t:ti.f32):
     # draw something on your canvas
     for i,j in pixels:
-        pixels[i, j] = ti.Vector([1.0, 1.0, 1.0]) # init your canvas to white
+        pixels[i, j] = ti.Vector([0.0, 0.0, 0.0]) # init your canvas to black
 
 gui = ti.GUI("Canvas", res=(res_x, res_y))
 
