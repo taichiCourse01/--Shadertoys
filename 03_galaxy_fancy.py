@@ -54,7 +54,7 @@ def render(time:ti.f32):
         color[2] = v2
         color += hsf.smoothstep(0.2, 0.0, len) * 0.85 + hsf.smoothstep(0.0, 0.6, v3) * .3
 
-        color = hsf.clamp3(color, 0.0, 1.0)
+        color = hsf.clamp(color, 0.0, 1.0)
 
         pixels[i, j] = color
 

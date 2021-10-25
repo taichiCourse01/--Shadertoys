@@ -37,7 +37,7 @@ def render(time:ti.f32):
         c = c ** 8 # making it sharp
         color = ti.Vector([1.0, 1.0, 1.0]) * c
 
-        color += hsf.clamp3(ti.Vector([0.0, 0.35, 0.5]), 0.0, 1.0) # turning blue
+        color += hsf.clamp(ti.Vector([0.0, 0.35, 0.5]), 0.0, 1.0) # turning blue
 
         pixels[i,j] = color
 
