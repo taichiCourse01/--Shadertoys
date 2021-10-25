@@ -43,3 +43,7 @@ def floor(vec):
 @ti.func
 def fract(vec):
     return vec - ti.floor(vec)
+
+@ti.func
+def mod(x, y):
+    return x - y * ti.floor(x/y)

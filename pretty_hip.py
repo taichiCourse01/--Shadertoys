@@ -23,7 +23,7 @@ def render(t:ti.f32):
         uv = R@uv
         uv += shift
         uv[1] += 0.5*(1-aspect)
-        pos = 20*uv
+        pos = 10*uv
         rep = hsf.fract(pos)
         dist = 2.0*ti.min(ti.min(rep.x, 1.0-rep.x), ti.min(rep.y, 1.0-rep.y))
         squareDist = (hsf.floor(pos) - 4.5).norm()
