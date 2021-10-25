@@ -33,28 +33,13 @@ def render(time:ti.f32):
             c += 1.0/(ti.Vector([p.x / (ti.sin(p2.x+t)/inten), p.y / (ti.cos(p2.y + t) / inten)])).norm()
         
         c /= float(max_iter)
-        c = 1.17 - ti.pow(c, 1.4) # reverse
+        c = 1.17 - c**1.4 # reverse
         c = c ** 8 # making it sharp
         color = ti.Vector([1.0, 1.0, 1.0]) * c
 
         color += hsf.clamp3(ti.Vector([0.0, 0.35, 0.5]), 0.0, 1.0) # turning blue
 
         pixels[i,j] = color
-
-
-	# for (int n = 0; n < MAX_ITER; n++) 
-	# {
-	# 	float t = time * (1.0 - (3.5 / float(n+1)));
-	# 	i = p + vec2(cos(t - i.x) + sin(t + i.y), sin(t - i.y) + cos(t + i.x));
-	# 	c += 1.0/length(vec2(p.x / (sin(i.x+t)/inten),p.y / (cos(i.y+t)/inten)));
-	# }
-	# c /= float(MAX_ITER);
-	# c = 1.17-pow(c, 1.4);
-	# vec3 colour = vec3(pow(abs(c), 8.0));
-    # colour = clamp(colour + vec3(0.0, 0.35, 0.5), 0.0, 1.0);
-    
-
-	# fragColor = vec4(colour, 1.0);
 
 gui = ti.GUI("Canvas", res=(res_x, res_y))
 
