@@ -1,17 +1,22 @@
 import taichi as ti
 
 @ti.func
-def smoothstep(v_min, v_max, v):
-    t = 0.0
-    if v_min >= v_max:
-        if v < v_min: t =0
-        else: t = 1
-    else:
-        if v < v_min: v = v_min
-        elif v > v_max: v = v_max
-        t = (v-v_min) / float(v_max-v_min)
+def swap(v1, v2):
+    return (v2, v1)
 
-    return -2 * t**3 + 3 * t ** 2
+@ti.func
+def clamp(v, v_min, v_max):
+    if v < v_min: v = v_min
+    if v > v_max: v = v_max
+    return v
+
+@ti.func
+def smoothstep(v1, v2, v):
+    assert(v1 != v2)
+    t = (v-v1) / float(v2-v1)
+    t = clamp(t, 0.0, 1.0)
+
+    return (3-2 * t) * t**2
 
 @ti.func
 def linearstep(v_min, v_max, v):
