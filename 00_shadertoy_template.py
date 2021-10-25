@@ -1,6 +1,7 @@
 # reference ==> 
 
 import taichi as ti
+import handy_shader_functions as hsf
 
 ti.init(arch = ti.cuda)
 

@@ -1,3 +1,5 @@
+# An example contributed by Andrew Sun (https://github.com/victoriacity)
+
 import math
 import taichi as ti
 
