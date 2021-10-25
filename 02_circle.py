@@ -13,14 +13,24 @@ pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 @ ti.func
 def circle(pos, center, radius, blur):
     r = (pos - center).norm()
-    t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
+    t = 0.0
+    if blur > 1.0: blur = 1.0
+    if blur <= 0.0: 
+        t = 1.0-hsf.step(1.0, r/radius)
+    else:
+        t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
     return t
 
 @ti.func
 def square(pos, center, radius, blur):
     diff = ti.abs(pos-center)
     r = ti.max(diff[0], diff[1])
-    t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
+    t = 0.0
+    if blur > 1.0: blur = 1.0
+    if blur <= 0.0: 
+        t = 1.0-hsf.step(1.0, r/radius)
+    else:
+        t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
     return t
 
 @ti.kernel
@@ -35,18 +45,18 @@ def render(t:ti.f32):
 
         # # discrete circle
         # if r <= r1:
-        #     color = ti.Vector([0.0, 0.0, 0.0])
+        #     color = ti.Vector([1.0, 1.0, 1.0])
 
         # # smooth circle
-        # color = ti.Vector([1.0, 1.0, 1.0]) * r/r1 
+        # color = ti.Vector([1.0, 1.0, 1.0]) * (1.0-r/r1)
 
         # # smooth circle 2
-        # color = ti.Vector([1.0, 1.0, 1.0]) * smoothstep(0.8, 1.0, r/r1)
+        # color = ti.Vector([1.0, 1.0, 1.0]) * hsf.smoothstep(1.0, 0.8, r/r1)
 
-        c = circle(pos, center, r1, 0.2)
+        c = circle(pos, center, r1, 0.1)
         mask = c
 
-        c2 = square(pos, center, 30.0/scatter, 0.2)
+        c2 = square(pos, center, 30.0/scatter, 0.1)
         mask -= c2
 
         color = ti.Vector([1.0, 1.0, 0.0]) * mask
