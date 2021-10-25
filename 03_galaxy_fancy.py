@@ -32,7 +32,7 @@ def render(time:ti.f32):
             p += ti.Vector([0.22, 0.3])
             ps += s - 1.5 - ti.sin(time * 0.13) * 0.1
 
-            # magic
+            # draw spiral curves
             for l in range(8):
                 len2 = p.dot(p) + ps * ps
                 p = ti.abs(p) / len2 - 0.659
