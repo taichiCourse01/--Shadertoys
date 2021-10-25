@@ -3,7 +3,7 @@ import taichi as ti
 
 
 ti.init(arch=ti.cuda)
-res = (1920, 1080)
+res = (800, 600)
 grid_spacing = 120
 far = 3600 # also use pixel coordinates in z axis
 near = 600

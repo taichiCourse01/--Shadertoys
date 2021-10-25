@@ -13,8 +13,15 @@ pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 @ ti.func
 def circle(pos, center, radius, blur):
     r = (pos - center).norm()
-    t = hsf.smoothstep(1.0 - blur, 1.0, r/radius)
-    return 1-t
+    t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
+    return t
+
+@ti.func
+def square(pos, center, radius, blur):
+    diff = ti.abs(pos-center)
+    r = ti.max(diff[0], diff[1])
+    t = hsf.smoothstep(1.0, 1.0-blur, r/radius)
+    return t
 
 @ti.kernel
 def render(t:ti.f32):
@@ -36,9 +43,13 @@ def render(t:ti.f32):
         # # smooth circle 2
         # color = ti.Vector([1.0, 1.0, 1.0]) * smoothstep(0.8, 1.0, r/r1)
 
-        c = circle(pos, center, r1, 0.5)
-        color = ti.Vector([1.0, 1.0, 1.0]) * c
+        c = circle(pos, center, r1, 0.2)
+        mask = c
 
+        c2 = square(pos, center, 30.0/scatter, 0.2)
+        mask -= c2
+
+        color = ti.Vector([1.0, 1.0, 0.0]) * mask
         pixels[i, j] = color
 
 gui = ti.GUI("Solid Circle", res=(res_x, res_y))
