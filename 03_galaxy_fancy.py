@@ -5,8 +5,8 @@ import handy_shader_functions as hsf
 
 ti.init(arch = ti.cuda)
 
-res_x = 1200//2
-res_y = 675//2
+res_x = 1200
+res_y = 675
 pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 
 @ti.kernel
