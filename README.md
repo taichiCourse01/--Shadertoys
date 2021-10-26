@@ -11,7 +11,7 @@
 
 ## 其他效果展示
 ### Circles tiling
-![circles demo](./data/circles.gif)
+![circles demo](./data/circles_2.gif)
 
 ### Fancy galaxy (reference ==> https://www.shadertoy.com/view/MdXSzS)
 ![galaxy demo](./data/galaxy.gif)
