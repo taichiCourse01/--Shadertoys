@@ -15,21 +15,21 @@ pixels = ti.Vector.field(3, ti.f32, shape=(res_x, res_y))
 
 @ti.kernel
 def render(t: ti.f32):
-    for i, j in pixels:
+    for i_, j_ in pixels:
         color = ti.Vector([0.0, 0.0, 0.0])
         
         tile_size = 3
 
         offset = int(t*5) # make it move
-        row = i + offset
-        col = j + offset
+        i = i_ + offset
+        j = j_ + offset
 
         for k in range(6):
             ... # do something
 
         color = hsf.clamp(color, 0.0, 1.0)
 
-        pixels[i, j] = color
+        pixels[i_, j_] = color
 
 gui = ti.GUI("Fractal Tiling", res=(res_x, res_y))
 
