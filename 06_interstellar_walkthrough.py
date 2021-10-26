@@ -116,14 +116,14 @@ def step():
 
 initialize()
 speed[None] = 500
-gui = ti.GUI('Warp', res, fast_gui=True)
+gui = ti.GUI('Warp', res)
 time = 0
 fps = 60
-while gui.running:
+for i in range(500):
     # uncomment the line below to change speed with time
     speed[None] = 20 + (1 - math.cos(time * math.pi / 4.0)) * 500
     mainimg.fill(0)
     step()
     gui.set_image(mainimg)
     time += 1.0 / fps
-    gui.show()
+    gui.show(f"./images/image{i:04}.png")
