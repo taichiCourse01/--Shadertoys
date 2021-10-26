@@ -25,7 +25,7 @@
 ### Interstellar (by Andrew Sun (https://github.com/victoriacity))
 ![interstellar demo](./data/interstellar.gif)
 
-### The 3D slides of a 4D Julia-set (by Dunfan Lu (https://github.com/AmesingFlank))
+### The 3D slices of a 4D Julia-set (by Dunfan Lu (https://github.com/AmesingFlank))
 ![interstellar demo](./data/julia_4d.gif)
 
 
