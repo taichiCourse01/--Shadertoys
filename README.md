@@ -1,27 +1,41 @@
-# 太极图形课S1-标题部分
-这个作业未来或将是你的开源项目，标题的内容可以来自作业中的核心关键词，让读者一眼看出你所完成的工作/做出的好玩demo
-
-如果暂时未想好，起名时可以参考“太极图形课S1-xxx作业”
-
-如下是作业（项目）展开说明的方法，可以帮大家理清思路，并且也对读者非常友好，请小伙伴们多多参考哦
+# 太极图形课S1-Procedural Animations示例程序-Shadertoys
 
 ## 背景简介
-这里可以简要描述作业（项目）的基本背景情况，它源自哪里？能够有效解决哪些问题？可以尽情列举它的亮点哦
+本文实现了一些Procedural Animation的示例程序。
+其中不少是借鉴的Shadertoy.com上的对应例子写的。
 
-## 成功效果展示
-这里可以展示这份作业（项目）run起来后的可视化效果，可以让其他人更直观感受到你的工作
+## 课堂Quiz
+请填写./quiz/quiz_fractal_tiling.py以达到(类似的)如下效果：
+### Fractal tiling (# reference ==> https://www.shadertoy.com/view/Ml2GWy#)
+![tiling demo](./data/fractal_tiling.gif)
 
-![fractal demo](./data/fractal.jpg)
-## 整体结构（Optional）
-脉络清晰的结构能完整展示你的设计思想，以及实现方式，方便读者快读代入，建议可以在repo的目录中包含如下内容：
-这个部分希望大家可以大作业中加入，小作业中可以选择性加入（如果不加也是OK的）
+## 其他效果展示
+### Circles tiling
+![circles demo](./data/circles.gif)
+
+### Fancy galaxy (reference ==> https://www.shadertoy.com/view/MdXSzS)
+![galaxy demo](./data/galaxy.gif)
+
+### Pretty hip (# reference ==> https://www.shadertoy.com/view/XsBfRW)
+![galaxy demo](./data/pretty_hip.gif)
+
+### Water caustic (# reference ==> https://www.shadertoy.com/view/MdlXz8)
+![caustic demo](./data/caustic.gif)
+
+### Interstellar (by Andrew Sun (https://github.com/victoriacity))
+![interstellar demo](./data/interstellar.gif)
+
+### The 3D slides of a 4D Julia-set (by Dunfan Lu (https://github.com/AmesingFlank))
+![interstellar demo](./data/julia_4d.gif)
+
+
+## 运行环境
+
 ```
--LICENSE
--|data
--README.MD
--xxx.py
+[Taichi] version 0.8.3, llvm 10.0.0, commit 021af5d2, win, python 3.8.10
 ```
 
 ## 运行方式
-相信读者们看到这里已经迫不及待想尝试了，这里标记好快速上手的方式即可~  
-例如:  `python3 main.py`
+确保handy_shader_functions.py可以访问的情况下，可以直接运行：`python3 [*].py`
+
+其中`07_julia_4d.py`需要`GGUI`的支持
