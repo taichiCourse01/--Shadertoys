@@ -1,3 +1,5 @@
+# An example contributed by Dunfan Lu (https://github.com/AmesingFlank)
+
 import taichi as ti
 
 ti.init(ti.cuda)
