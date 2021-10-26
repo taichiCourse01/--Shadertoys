@@ -29,14 +29,7 @@ def lerp(x, y, a):
 
 @ti.func
 def clamp(v, v_min, v_max):
-    if ti.static(isinstance(v, ti.Matrix)): # vector is implemented as a special type of ti.Matrix
-        for i in ti.static(range(v.m)): # v.m = number of rows for a vector
-            if v[i] < v_min: v[i] = v_min
-            if v[i] > v_max: v[i] = v_max
-    else: # scalar
-        if v < v_min: v = v_min
-        if v > v_max: v = v_max
-    return v
+    return ti.min(ti.max(v, v_min), v_max)
 
 @ti.func
 def floor(vec):
