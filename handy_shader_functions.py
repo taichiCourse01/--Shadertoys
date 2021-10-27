@@ -41,4 +41,5 @@ def fract(vec):
 
 @ti.func
 def mod(x, y):
-    return x - y * ti.floor(x/y)
+    #return x - y * ti.floor(x/y)
+    return x % y 
