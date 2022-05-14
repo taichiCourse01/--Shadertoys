@@ -7,10 +7,10 @@ import taichi as ti
 ti.init(arch=ti.cuda)
 res = (800, 600)
 grid_spacing = 120
-far = 3600 # also use pixel coordinates in z axis
+far = 3600  # also use pixel coordinates in z axis
 near = 600
-fov = 60 # horizontal field of view
-radius = 2.5 # particle radius in pixels
+fov = 60  # horizontal field of view
+radius = 2.5  # particle radius in pixels
 shutter = 0.1
 tanfov = math.tan(fov * math.pi / 180)
 n_grids = (
@@ -23,7 +23,7 @@ n_particles = int(n_grids[0] * n_grids[1] * n_grids[2])
 
 pos = ti.Vector.field(3, dtype=float, shape=n_particles)
 col = ti.Vector.field(3, dtype=float, shape=n_particles)
-speed = ti.field(dtype=float, shape=()) # pixel per second
+speed = ti.field(dtype=float, shape=())  # pixel per second
 mainimg = ti.Vector.field(3, dtype=float, shape=res)
 
 
@@ -35,9 +35,9 @@ def rand3():
 @ti.func
 def spawn(grid_idx, i):
     pos[i] = (grid_idx + rand3()) \
-            * grid_spacing
+        * grid_spacing
     pos[i][2] += float(near)
-    col[i] = ti.Vector([1, 2, 3]) + rand3() # ad-hoc linear color space
+    col[i] = ti.Vector([1, 2, 3]) + rand3()  # ad-hoc linear color space
 
 
 @ti.kernel
@@ -83,8 +83,8 @@ def draw_particle(v, color, radius, opacity):
                 r_sqr = ((I - v_view) ** 2).sum()
                 if r_sqr <= r_view ** 2:
                     mainimg[I] += opacity * color \
-                       * depth_fade(v) \
-                       * radius_fade(r_sqr, r_view) \
+                        * depth_fade(v) \
+                        * radius_fade(r_sqr, r_view)
 
 
 @ti.func
